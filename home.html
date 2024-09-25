@@ -3,48 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Field Blog Home</title>
+    <title>Data Blog Home</title>
     <link rel="stylesheet" href="home.css">
+    <script src="home.js" defer></script>
 </head>
 <body>
 
 <header>
-    <h1>Explore Data Fields</h1>
+    <h1>Welcome to the Data Blog</h1>
+    <div class="burger-menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 </header>
+
+<nav>
+    <ul class="nav-links">
+        <li><a href="#data-science">Data Science</a></li>
+        <li><a href="#data-engineering">Data Engineering</a></li>
+        <li><a href="#data-analytics">Data Analytics</a></li>
+        <li><a href="#math-statistics">Math/Statistics</a></li>
+    </ul>
+</nav>
 
 <main>
     <section id="field-buttons">
-        <h2>Pick Your Data Specialization</h2>
+        <h2>Explore Our Fields</h2>
         <div class="button-container">
-            <button onclick="navigateTo('data-science')">Data Science</button>
-            <button onclick="navigateTo('data-engineering')">Data Engineering</button>
-            <button onclick="navigateTo('data-analyst')">Data Analyst</button>
-            <button onclick="navigateTo('math-stats')">Math & Statistics</button>
+            <button onclick="location.href='#data-science'">Data Science</button>
+            <button onclick="location.href='#data-engineering'">Data Engineering</button>
+            <button onclick="location.href='#data-analytics'">Data Analytics</button>
+            <button onclick="location.href='#math-statistics'">Math/Statistics</button>
         </div>
     </section>
 
     <section id="description">
-        <p>Explore in-depth articles and tutorials on each specialization to help you build your career in the field of data.</p>
+        <h2>About Our Blog</h2>
+        <p>This blog is dedicated to providing insights, tutorials, and discussions around data science, data engineering, data analytics, and mathematical statistics. Stay tuned for our latest posts!</p>
     </section>
 
     <section id="featured-content">
-        <h2>Featured Blog Posts</h2>
-        <!-- Example blog post previews -->
+        <h2>Featured Posts</h2>
         <article>
-            <h3>Getting Started with Data Science</h3>
-            <p>An introduction to the fundamentals of data science and how to get started in this rapidly growing field.</p>
+            <h3>Understanding Machine Learning</h3>
+            <p>Discover the fundamentals of machine learning and its applications in the real world. <a href="#">Read more...</a></p>
         </article>
         <article>
-            <h3>Building Data Pipelines</h3>
-            <p>A comprehensive guide to creating robust data pipelines as a data engineer.</p>
+            <h3>Data Engineering Best Practices</h3>
+            <p>Learn about best practices in data engineering to optimize your workflows. <a href="#">Read more...</a></p>
+        </article>
+        <article>
+            <h3>Statistical Analysis in Python</h3>
+            <p>Dive into statistical analysis and learn how to apply Python for data insights. <a href="#">Read more...</a></p>
         </article>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2024 Data Field Blog</p>
+    <p>&copy; 2024 Data Blog by [Your Name]</p>
 </footer>
 
-<script src="home.js"></script>
 </body>
 </html>
