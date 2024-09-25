@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Login and Sign-Up Page</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
     <style>
         body {
@@ -14,17 +14,17 @@
             height: 100vh;
             background-color: #f4f4f4;
         }
-        .login-container {
+        .container {
             background: white;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
         }
         h2 {
             text-align: center;
         }
-        input[type="text"],
-        input[type="password"] {
+        input[type="text"], input[type="password"], input[type="email"] {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -43,39 +43,101 @@
         button:hover {
             background-color: #4cae4c;
         }
+        .google-btn {
+            background-color: #db4437;
+            margin-top: 10px;
+        }
         .error {
             color: red;
             text-align: center;
+        }
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .link a {
+            color: #5cb85c;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-<div class="login-container">
+<div class="container">
     <h2>Login</h2>
-    <form id="loginForm" onsubmit="return validateForm()">
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
+    <form id="loginForm" onsubmit="return validateLogin()">
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
         <button type="submit">Login</button>
-        <div class="error" id="errorMessage"></div>
+        <div class="error" id="loginErrorMessage"></div>
     </form>
+    <button class="google-btn" onclick="googleLogin()">Login with Google</button>
+
+    <div class="link">
+        <a href="#" onclick="toggleForms()">Don't have an account? Sign up</a>
+    </div>
+</div>
+
+<div class="container" id="signUpContainer" style="display:none;">
+    <h2>Sign Up</h2>
+    <form id="signUpForm" onsubmit="return validateSignUp()">
+        <input type="text" id="signUpUsername" placeholder="Username" required>
+        <input type="email" id="signUpEmail" placeholder="Email" required>
+        <input type="password" id="signUpPassword" placeholder="Password" required>
+        <button type="submit">Sign Up</button>
+        <div class="error" id="signUpErrorMessage"></div>
+    </form>
+
+    <div class="link">
+        <a href="#" onclick="toggleForms()">Already have an account? Login</a>
+    </div>
 </div>
 
 <script>
-    function validateForm() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const errorMessage = document.getElementById('errorMessage');
+    // Toggle between Login and Sign-Up forms
+    function toggleForms() {
+        const loginContainer = document.querySelector('.container');
+        const signUpContainer = document.getElementById('signUpContainer');
         
-        // Example validation (replace with your actual logic)
+        loginContainer.style.display = loginContainer.style.display === 'none' ? 'block' : 'none';
+        signUpContainer.style.display = signUpContainer.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Simple Login Validation
+    function validateLogin() {
+        const username = document.getElementById('loginUsername').value;
+        const password = document.getElementById('loginPassword').value;
+        const loginErrorMessage = document.getElementById('loginErrorMessage');
+
         if (username === "user" && password === "pass") {
             alert("Login successful!");
-            window.location.href = "index.html"; // Redirect to home page or another page
-            return false; // Prevent default form submission
+            window.location.href = "index.html"; // Redirect to homepage or dashboard
         } else {
-            errorMessage.textContent = "Invalid username or password!";
-            return false; // Prevent form submission
+            loginErrorMessage.textContent = "Invalid username or password!";
         }
+        return false; // Prevent form submission
+    }
+
+    // Simple Sign-Up Validation
+    function validateSignUp() {
+        const username = document.getElementById('signUpUsername').value;
+        const email = document.getElementById('signUpEmail').value;
+        const password = document.getElementById('signUpPassword').value;
+        const signUpErrorMessage = document.getElementById('signUpErrorMessage');
+
+        if (username && email && password) {
+            alert("Sign-up successful!");
+            toggleForms(); // Switch back to login after successful sign-up
+        } else {
+            signUpErrorMessage.textContent = "Please fill all fields!";
+        }
+        return false; // Prevent form submission
+    }
+
+    // Google Login Simulation (In a real-world app, you would use Google's OAuth API)
+    function googleLogin() {
+        alert("Google Login Clicked!");
+        // Here you would integrate Google's OAuth API
     }
 </script>
 
