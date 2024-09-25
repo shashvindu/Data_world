@@ -136,10 +136,21 @@
 
     // Google Login Simulation (In a real-world app, you would use Google's OAuth API)
     function googleLogin() {
-        alert("Google Login Clicked!");
-        // Here you would integrate Google's OAuth API
+        google.accounts.id.initialize({
+            client_id: 'YOUR_GOOGLE_CLIENT_ID', // Replace with your Google Client ID
+            callback: handleCredentialResponse
+        });
+        google.accounts.id.prompt(); // Display the prompt
+    }
+
+    function handleCredentialResponse(response) {
+        console.log("Encoded JWT ID token: " + response.credential);
+        // Here, you can send the token to your backend to validate the user
+        alert("Google login successful! Token: " + response.credential);
     }
 </script>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 
 </body>
 </html>
