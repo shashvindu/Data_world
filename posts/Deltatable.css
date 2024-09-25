@@ -11,7 +11,11 @@ header {
     color: #ffffff;
     padding: 1.5rem;
     text-align: center;
+    background-image: url('Deltatable1.png');
+    background-size: cover; /* This will ensure the image covers the entire header */
+    background-position: center; /* This will center the image */
 }
+
 
 h1, h2 {
     color: #333333;
